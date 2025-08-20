@@ -18,8 +18,13 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Omkar Surve - Full Stack Developer",
   description:
-    "Portfolio of Omkar Surve - Experienced Backend Developer specializing in Python, Django, FastAPI, and AI/ML solutions",
+    "Portfolio of Omkar Surve - Full-Stack Developer specializing in Python, Django, FastAPI, React, Next.js, and AI/ML solutions",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.png", // path inside /public
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 }
 
 export default function RootLayout({
