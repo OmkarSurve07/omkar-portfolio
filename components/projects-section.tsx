@@ -15,6 +15,15 @@ export function ProjectsSection() {
       featured: true,
     },
     {
+      title: "Ankur Mental Health – Therapy & Counselling Website",
+      description:
+        "A calm, trust‑centric web experience for a multidisciplinary mental health practice in South Mumbai and Thane, designed to communicate safety, clarity, and accessible care.",
+      image: "/ankur-mental-health-care.png",
+      technologies: ["JavaScript", "ReactJS", "HTML", "CSS", "API Integrations"],
+      liveUrl: "https://ankurmentalhealth.com/",
+      featured: true,
+    },
+    {
       title: "Smeltt E-commerce Platform",
       description:
         "Comprehensive e-commerce website using Shopify with custom Liquid templates, JavaScript functionality, and responsive design. Implemented low-code concepts for client self-maintenance.",

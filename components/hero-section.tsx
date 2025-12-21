@@ -55,7 +55,7 @@ export function HeroSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-2">3+</div>
+              <div className="text-2xl font-bold text-primary mb-2">4+</div>
               <div className="text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
