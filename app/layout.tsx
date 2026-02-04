@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ??
       "https://omkar-portfolio-five.vercel.app"
   ),
+  
+  verification: {
+    google: "7I-iDWiHIQM8JKqwxtejOcT77a21BCFCjY_M4yzpnYM",
+  },
+  
   title: {
     default: "Omkar Suhas Surve | Full Stack Web & App Developer",
     template: "%s | Omkar Suhas Surve"
