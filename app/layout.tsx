@@ -16,6 +16,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://omkar-portfolio-five.vercel.app"),
   title: {
     default: "Omkar Suhas Surve | Full Stack Web & App Developer",
     template: "%s | Omkar Suhas Surve"
