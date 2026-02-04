@@ -39,7 +39,7 @@ export function AboutSection() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                I'm a Full-Stack Developer with expertise in both backend and frontend technologies. 
+                I am <strong>Omkar Suhas Surve</strong> Software Engineer with expertise in both backend and frontend technologies. 
                 On the backend, I work with Python, Django, and FastAPI to build secure, scalable APIs with JWT authentication. 
                 On the frontend, I create modern, responsive UIs using React, Next.js, Tailwind CSS, and Material UI.
               </p>
