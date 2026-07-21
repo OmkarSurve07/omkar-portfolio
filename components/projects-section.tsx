@@ -2,62 +2,162 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
+import { ProjectDemoDialog } from "@/components/project-demo-dialog";
+
+type Screenshot = {
+  image: string;
+  title: string;
+};
+
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  featured: boolean;
+
+  demoType: "live" | "gallery";
+
+  liveUrl?: string;
+  screenshots?: Screenshot[];
+};
 
 export function ProjectsSection() {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Y2J Money Tree Platform",
       description:
         "Financial platform built using JavaScript and Velo (Wix's proprietary language) for comprehensive money management and investment tracking with interactive user interfaces.",
       image: "/financial-platform-interface.png",
       technologies: ["JavaScript", "Velo", "Wix", "HTML", "CSS", "API Integration"],
-      liveUrl: "https://www.y2jmoneytree.in/",
       featured: true,
+
+      demoType: "live",
+      liveUrl: "https://www.y2jmoneytree.in/",
     },
     {
       title: "Ankur Mental Health – Therapy & Counselling Website",
       description:
-        "A calm, trust‑centric web experience for a multidisciplinary mental health practice in South Mumbai and Thane, designed to communicate safety, clarity, and accessible care.",
+        "A calm, trust-centric web experience for a multidisciplinary mental health practice in South Mumbai and Thane.",
       image: "/ankur-mental-health-care.png",
       technologies: ["JavaScript", "ReactJS", "HTML", "CSS", "API Integrations"],
+      featured: true,
+
+      demoType: "live",
       liveUrl: "https://ankurmentalhealth.com/",
-      featured: true,
     },
     {
-      title: "Smeltt E-commerce Platform",
+      title: "Rushabhayan Conference Platform",
       description:
-        "Comprehensive e-commerce website using Shopify with custom Liquid templates, JavaScript functionality, and responsive design. Implemented low-code concepts for client self-maintenance.",
-      image: "/modern-ecommerce-interface.png",
-      technologies: ["Shopify", "Liquid", "JavaScript", "HTML", "CSS", "React", "JSON"],
-      liveUrl: "https://smeltt.com/",
+        "International conference and art forum website showcasing India's civilizational roots.",
+      image: "/rushabhayan-website.png",
+      technologies: ["Wix", "Velo", "JavaScript"],
       featured: true,
+
+      demoType: "live",
+      liveUrl: "https://rushabhayan.org/",
     },
     {
-      title: "HR Nexby AI Recruiter",
+      title: "Dream City Properties",
       description:
-        "AI-powered recruitment platform with LLM integration for intelligent candidate screening, resume analysis, and automated interview scheduling with modern React frontend.",
-      image: "/ai-recruitment-dashboard.png",
-      technologies: ["Python", "FastAPI", "LLM", "RAG", "VectorDB", "React", "JavaScript", "PostgreSQL"],
-      liveUrl: "https://hr.nexby.ai/",
+        "Modern real estate platform designed to simplify property discovery and legal assistance.",
+      image: "/dream-city-properties.png",
+      technologies: [
+        "ReactJS",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "API Integration",
+        "Responsive Design",
+      ],
       featured: true,
+
+      demoType: "live",
+      liveUrl: "https://dreamcityproperties.in/",
     },
     {
-      title: "Nexby AI Expo Platform",
+      title: "Trading Platform with Education & Learning Management System",
       description:
-        "Comprehensive AI showcase platform demonstrating various AI capabilities including natural language processing and machine learning models with interactive React components.",
-      image: "/ai-showcase-platform.png",
-      technologies: ["Python", "Django", "AI/ML", "PostgreSQL", "React", "JavaScript", "Material-UI"],
-      liveUrl: "https://expo.nexby.ai/",
-      featured: true,
-    },
-    {
-      title: "Asmita Patel Trading Platform",
-      description:
-        "Educational trading platform with real-time data processing, user management, and comprehensive learning management system featuring modern frontend interfaces.",
+        "Educational trading platform with real-time data processing and LMS.",
       image: "/trading-education-platform.png",
-      technologies: ["Python", "Django", "PostgreSQL", "JWT", "REST API", "React", "JavaScript", "Pandas"],
-      liveUrl: "https://www.asmitapatel.com/",
+      technologies: [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "JWT",
+        "REST API",
+        "React",
+        "JavaScript",
+        "Pandas",
+      ],
       featured: true,
+
+      demoType: "gallery",
+
+      screenshots: [
+        {
+          image: "/trading/login.png",
+          title: "Login"
+        },
+        {
+          image: "/trading/dashboard.png",
+          title: "Dashboard"
+        },
+        {
+          image: "/trading/courses.png",
+          title: "Courses"
+        },
+        {
+          image: "/trading/live-chart.png",
+          title: "Live Chart"
+        }
+      ]
+    },
+    {
+      title: "Global Marine Exports – Mix Optimization Platform",
+      description:
+        "Enterprise web application developed for a global marine exports company.",
+      image: "/global-marine-exports-dashboard.png",
+      technologies: [
+        "Python",
+        "Django REST Framework",
+        "ReactJS",
+        "JavaScript",
+        "PostgreSQL",
+        "Pandas",
+        "SciPy",
+        "Celery",
+        "Redis",
+        "Docker",
+        "AWS",
+        "Git",
+      ],
+      featured: true,
+
+      demoType: "gallery",
+
+      screenshots: [
+        {
+          image: "/gme/global-marine-exports-dashboard.png",
+          title: "Dashboard"
+        },
+        {
+          image: "/gme/all-orders.png",
+          title: "Orders"
+        },
+        {
+          image: "/gme/mix-engine.png",
+          title: "Mix Optimization"
+        },
+        {
+          image: "/gme/bulk-upload.png",
+          title: "Bulk Upload"
+        },
+        {
+          image: "/gme/all-samples.png",
+          title: "Samples"
+        }
+      ]
     },
   ]
 
@@ -99,12 +199,29 @@ export function ProjectsSection() {
                   </div>
 
                   <div className="flex gap-3">
-                    <Button asChild size="sm" className="flex-1">
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
-                      </a>
-                    </Button>
+
+                    {project.demoType === "live" ? (
+
+                      <Button asChild size="sm" className="flex-1">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Live Demo
+                        </a>
+                      </Button>
+
+                    ) : (
+
+                      <ProjectDemoDialog
+                        title={project.title}
+                        screenshots={project.screenshots}
+                      />
+
+                    )}
+
                   </div>
                 </CardContent>
               </Card>
