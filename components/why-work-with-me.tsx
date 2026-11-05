@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Reveal } from "@/components/reveal"
 import {
   ShieldCheck,
   Rocket,
@@ -8,90 +8,75 @@ import {
   Handshake,
 } from "lucide-react"
 
+const reasons = [
+  {
+    icon: Rocket,
+    title: "End-to-end delivery",
+    description: "Planning, build and deployment owned by one accountable partner.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Clear communication",
+    description: "Regular updates, honest timelines and quick answers.",
+  },
+  {
+    icon: Bot,
+    title: "AI expertise",
+    description: "OpenAI, LangChain, RAG and automation applied pragmatically.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Production-ready code",
+    description: "Secure APIs, authentication and architecture that scales.",
+  },
+  {
+    icon: CloudCog,
+    title: "Deployment & DevOps",
+    description: "AWS, Docker and Vercel with repeatable release pipelines.",
+  },
+  {
+    icon: Handshake,
+    title: "Reliable support",
+    description: "Maintenance, improvements and long-term collaboration.",
+  },
+]
+
 export function WhyWorkWithMe() {
-  const reasons = [
-    {
-      icon: Rocket,
-      title: "End-to-End Development",
-      description:
-        "From planning and architecture to deployment and long-term support.",
-    },
-    {
-      icon: MessageCircle,
-      title: "Clear Communication",
-      description:
-        "Regular updates, transparent timelines, and quick responses throughout the project.",
-    },
-    {
-      icon: Bot,
-      title: "AI Expertise",
-      description:
-        "Specialized in OpenAI, LangChain, RAG pipelines, AI Agents, and workflow automation.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Production-Ready Code",
-      description:
-        "Clean architecture, secure APIs, authentication, and scalable backend systems.",
-    },
-    {
-      icon: CloudCog,
-      title: "Deployment & DevOps",
-      description:
-        "Deploy and manage applications on AWS, Railway, Docker, and Vercel.",
-    },
-    {
-      icon: Handshake,
-      title: "Reliable Support",
-      description:
-        "Available for maintenance, improvements, bug fixes, and long-term collaboration.",
-    },
-  ]
-
   return (
-    <section className="py-20">
+    <section className="relative py-20 sm:py-24">
       <div className="container mx-auto px-4">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+          <Reveal>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-primary">
+              Why me
+            </p>
+            <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+              Good code.{" "}
+              <span className="text-muted-foreground">Zero drama.</span>
+            </h2>
+            <p className="mt-4 max-w-sm text-muted-foreground">
+              A dependable development partner for teams that value clarity,
+              maintainability and delivery without the usual overhead.
+            </p>
+          </Reveal>
 
-        <div className="text-center mb-14">
-
-          <h2 className="font-space-grotesk text-3xl md:text-4xl font-bold">
-            Why Work With Me
-          </h2>
-
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            I focus on delivering scalable, maintainable, and business-oriented
-            solutions that help clients launch faster and grow confidently.
-          </p>
-
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          {reasons.map((item, index) => (
-            <Card
-              key={index}
-              className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-            >
-              <CardContent className="pt-8">
-
-                <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-5">
-
-                  <item.icon className="w-8 h-8 text-primary" />
-
+          <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+            {reasons.map((item, index) => (
+              <Reveal key={item.title} delay={55 * index}>
+                <div className="group flex gap-3.5">
+                  <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg border border-border bg-card text-primary transition-transform duration-300 ease-bounce group-hover:-translate-y-0.5 group-hover:scale-105">
+                    <item.icon className="size-4" />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-sm font-semibold">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="text-xl font-semibold mb-3">
-                  {item.title}
-                </h3>
-
-                <p className="text-muted-foreground">
-                  {item.description}
-                </p>
-
-              </CardContent>
-            </Card>
-          ))}
-
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

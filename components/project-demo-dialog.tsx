@@ -43,13 +43,13 @@ export function ProjectDemoDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm" className="flex-1">
+        <Button size="sm" className="w-full rounded-full">
           <ExternalLink className="w-4 h-4 mr-2" />
           View Demo
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-6xl">
+      <DialogContent className="max-h-[90vh] max-w-6xl overflow-y-auto">
 
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
